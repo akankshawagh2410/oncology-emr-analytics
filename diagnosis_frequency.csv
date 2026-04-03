@@ -1,0 +1,12 @@
+description,code,patient_count,encounter_count
+Malignant neoplasm of breast (disorder),254837009.0,6,6
+Non-small cell carcinoma of lung  TNM stage 1 (disorder),424132000.0,6,6
+Non-small cell lung cancer (disorder),254637007.0,6,6
+Suspected lung cancer (situation),162573006.0,6,6
+Overlapping malignant neoplasm of colon (disorder),109838007.0,5,5
+Neoplasm of prostate (disorder),126906006.0,4,4
+Suspected prostate cancer (situation),315268008.0,4,4
+Carcinoma in situ of prostate (disorder),92691004.0,3,3
+Malignant neoplasm of colon (disorder),363406005.0,3,3
+Leukemia  disease (disorder),93143009.0,1,1
+Metastatic malignant neoplasm to prostate (disorder),94503003.0,1,1
