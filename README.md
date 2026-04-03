@@ -1,8 +1,10 @@
 # Oncology Patient Flow & Care Quality Analytics
 
-**Role target:** Clinical Analyst I — Fred Hutch / UW Medicine Joint Oncology Program  
-**Tools:** Python · SQL · Pandas · Matplotlib/Seaborn · Tableau  
-**Data:** [Synthea](https://synthetichealth.github.io/synthea/) synthetic EMR (de-identified, HIPAA-safe)
+**Tools:** Python · SQL · Pandas · Matplotlib/Seaborn · Tableau     
+**Data:** [Synthea](https://synthetichealth.github.io/synthea/) synthetic EMR (de-identified, HIPAA-safe)                                                                 
+**Dashboard Link:** [Oncology Patient Flow Analytics](https://public.tableau.com/shared/JN97PNCY9?:display_count=n&:origin=viz_share_link)                   
+**Blog:** 
+
 
 ---
 
@@ -27,54 +29,18 @@ oncology-emr-analytics/
 │   ├── raw/               # Synthea CSVs (gitignored — generate locally)
 │   └── processed/         # Clean exports for Tableau
 ├── notebooks/
-│   └── 01_eda_synthea.ipynb   # Main EDA notebook
-├── sql/
+│   └── eda_synthea.ipynb   # Main EDA notebook
+├── SQL/
 │   └── clinical_metrics.sql   # Standalone SQL queries (DuckDB / SQLite)
 ├── scripts/
 │   └── setup_data.py          # Downloads Synthea and generates data
 ├── figures/                   # Exported charts (auto-generated)
 ├── requirements.txt
+├── Tableau Dashboard/
+│   └── Oncology Patient Flow & Care Quality.twbx
+│   └── Dashboard.png  
 └── README.md
 ```
-
----
-
-## Quickstart
-
-### 1. Clone and install dependencies
-
-```bash
-git clone https://github.com/YOUR_USERNAME/oncology-emr-analytics.git
-cd oncology-emr-analytics
-pip install -r requirements.txt
-```
-
-### 2. Generate synthetic EMR data
-
-Requires **Java 11+** installed. The script downloads Synthea (~50MB) and generates 1,000 synthetic patients in Seattle, WA.
-
-```bash
-python scripts/setup_data.py --patients 1000
-```
-
-To generate more patients (richer data, ~5 min):
-```bash
-python scripts/setup_data.py --patients 5000 --state Washington --city Seattle
-```
-
-### 3. Run the EDA notebook
-
-```bash
-jupyter notebook notebooks/01_eda_synthea.ipynb
-```
-
-Run all cells top-to-bottom. Figures are saved to `figures/` and clean CSVs are written to `data/processed/`.
-
-### 4. Connect Tableau
-
-Open Tableau Desktop → **Connect to Text File** → select `data/processed/encounters_clean.csv`.  
-Repeat for `readmissions.csv` and `diagnosis_frequency.csv`. Join on `id` / `patient` fields.
-
 ---
 
 ## Key metrics produced
@@ -117,6 +83,19 @@ con.execute(\"CREATE VIEW conditions AS SELECT * FROM read_csv_auto('data/raw/co
 ```
 
 ---
+## Live dashboard
+View on Tableau Public → [Oncology Patient Flow Analytics](https://public.tableau.com/shared/JN97PNCY9?:display_count=n&:origin=viz_share_link)
+
+## Key findings
+1. Encounter volume peaked ~2018–2020 then declined — 
+   signals end-of-life attrition or referral pipeline change
+2. Hospice median LOS ~25 days vs inpatient ~5.3 days — 
+   care setting drives resource utilization
+3. 31% 30-day readmission rate exceeds 10–15% benchmark — 
+   quality improvement opportunity
+4. Lung and breast cancer most prevalent (6 patients each)
+5. 95% of oncology patients aged 55+ — consistent with 
+   real-world cancer epidemiology
 
 ## Tech Stack
 
